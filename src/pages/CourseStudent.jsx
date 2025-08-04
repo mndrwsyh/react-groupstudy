@@ -39,6 +39,11 @@ function CourseStudent() {
     courseInLocalStorage ? JSON.parse(courseInLocalStorage) : []
   );
 
+  const resourceInLocalStorage = localStorage.getItem("resources");
+  const [resources, setResources] = useState(
+    resourceInLocalStorage ? JSON.parse(resourceInLocalStorage) : []
+  );
+
   const [label, setLabel] = useState("");
 
   const handleAddNew = () => {
@@ -84,9 +89,15 @@ function CourseStudent() {
     if (confirmDelete) {
       const updatedCourses = courses.filter((item) => item.id !== course.id);
       setCourses(updatedCourses);
-      toast("Course has been deleted.");
-
       localStorage.setItem("courses", JSON.stringify(updatedCourses));
+
+      const updatedResource = resources.filter(
+        (resource) => resource.resourceCourse !== course.id
+      );
+      setResources(updatedResource);
+      localStorage.setItem("resources", JSON.stringify(updatedResource));
+
+      toast("Course has been deleted.");
     }
   };
 
@@ -209,6 +220,9 @@ function CourseStudent() {
                     const courseInGroup = groups.some((g) =>
                       g.selectedCourse.includes(course.id)
                     );
+                    const courseinResource = resources.some((r) =>
+                      r.resourceCourse.includes(course.id)
+                    );
                     return (
                       <ListItem
                         key={course.id}
@@ -220,7 +234,7 @@ function CourseStudent() {
                               <Edit />
                             </IconButton>
                             <IconButton
-                              disabled={courseInGroup}
+                              disabled={courseInGroup && courseinResource}
                               onClick={() => handleDelete(course)}
                             >
                               <Delete />
