@@ -148,6 +148,18 @@ function GroupList() {
 
     return in24Hours >= 0 && in24Hours <= 24;
   };
+
+  const filteredGroups = groups.filter((group) => {
+    if (filterSession === "All") {
+      return true;
+    } else {
+      const groupSessions = sessions.filter(
+        (s) => s.selectedGroup === group.id
+      );
+      return groupSessions.some(upcomingSession);
+    }
+  });
+
   return (
     <>
       <Container maxWidth="md" sx={{ pt: "60px" }}>
@@ -230,18 +242,18 @@ function GroupList() {
                 <TableCell />
               </TableRow>
             </TableHead>
-            {groups
-              .filter((group) => {
-                if (filterSession === "All") {
-                  return true;
-                } else {
-                  const groupSessions = sessions.filter(
-                    (s) => s.selectedGroup === group.id
-                  );
-                  return groupSessions.some(upcomingSession);
-                }
-              })
-              .map((group) => (
+            {filteredGroups.length === 0 ? (
+              <TableBody>
+                <TableRow>
+                  <TableCell colSpan={6} align="center">
+                    {filterSession === "All"
+                      ? "No groups created yet."
+                      : "No sessions soon."}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            ) : (
+              filteredGroups.map((group) => (
                 <TableBody key={group.id}>
                   <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
                     <TableCell
@@ -420,7 +432,8 @@ function GroupList() {
                     </TableCell>
                   </TableRow>
                 </TableBody>
-              ))}
+              ))
+            )}
           </Table>
         </TableContainer>
 

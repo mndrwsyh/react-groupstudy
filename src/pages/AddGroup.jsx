@@ -102,6 +102,7 @@ function AddGroup() {
           sx={{ p: "30px", mt: "20px", mb: "40px" }}
         >
           <TextField
+            color="success"
             fullWidth
             id="group_location"
             label="Group Name"
@@ -110,8 +111,11 @@ function AddGroup() {
             onChange={(event) => setGroupName(event.target.value)}
           />
           <FormControl sx={{ mt: "25px" }} fullWidth>
-            <InputLabel id="demo-simple-select-label">Course</InputLabel>
+            <InputLabel color="success" id="demo-simple-select-label">
+              Course
+            </InputLabel>
             <Select
+              color="success"
               key={courses.id}
               labelId="note_category_label"
               id="group_course"

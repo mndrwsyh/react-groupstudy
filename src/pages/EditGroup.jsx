@@ -110,6 +110,7 @@ function EditGroup() {
         <Paper elevation={3} sx={{ p: "30px", mt: "20px", mb: "40px" }}>
           <TextField
             fullWidth
+            color="success"
             id="group_location"
             label="Group Name"
             variant="outlined"
@@ -117,8 +118,11 @@ function EditGroup() {
             onChange={(event) => setGroupName(event.target.value)}
           />
           <FormControl sx={{ mt: "25px" }} fullWidth>
-            <InputLabel id="demo-simple-select-label">Course</InputLabel>
+            <InputLabel color="success" id="demo-simple-select-label">
+              Course
+            </InputLabel>
             <Select
+              color="success"
               labelId="note_category_label"
               id="group_course"
               label="Course"

@@ -27,13 +27,13 @@ const pages = [
     icon: "FormatListBulletedIcon",
   },
   {
-    label: "Session Scheduler",
-    url: "/scheduler",
+    label: "Courses/Students",
+    url: "/coursestudent",
     icon: "FormatListBulletedIcon",
   },
   {
-    label: "Courses/Students",
-    url: "/coursestudent",
+    label: "Session Scheduler",
+    url: "/scheduler",
     icon: "FormatListBulletedIcon",
   },
   {
@@ -69,7 +69,7 @@ function ResponsiveAppBar() {
             sx={{
               display: { xs: "none", md: "flex" },
               mr: 1,
-              mb: "3px",
+              mb: "px",
             }}
           />
 

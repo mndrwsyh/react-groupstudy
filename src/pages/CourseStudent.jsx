@@ -200,6 +200,7 @@ function CourseStudent() {
               >
                 <TextField
                   fullWidth
+                  color="success"
                   label="Course"
                   variant="outlined"
                   value={label}
@@ -265,6 +266,7 @@ function CourseStudent() {
               >
                 <TextField
                   fullWidth
+                  color="success"
                   label="Student"
                   variant="outlined"
                   value={labelStudent}

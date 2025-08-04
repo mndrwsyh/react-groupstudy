@@ -116,8 +116,11 @@ function EditSession() {
                 </Typography>
               </Box>
               <FormControl sx={{ mt: "25px" }} fullWidth>
-                <InputLabel id="demo-simple-select-label">Group</InputLabel>
+                <InputLabel color="success" id="demo-simple-select-label">
+                  Group
+                </InputLabel>
                 <Select
+                  color="success"
                   disabled
                   labelId="note_category_label"
                   id="group_name"
@@ -136,6 +139,7 @@ function EditSession() {
                 </Select>
               </FormControl>
               <TextField
+                color="success"
                 sx={{ mt: "25px" }}
                 fullWidth
                 id="group_topic"
@@ -145,6 +149,7 @@ function EditSession() {
                 onChange={(event) => setTopic(event.target.value)}
               />
               <TextField
+                color="success"
                 sx={{ mt: "25px" }}
                 fullWidth
                 id="group_location"

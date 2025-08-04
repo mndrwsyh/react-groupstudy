@@ -125,6 +125,7 @@ function ResourceLibrary() {
             }}
           >
             <TextField
+              color="success"
               disabled={resourceCourse === "All"}
               fullWidth
               label="Link/Notes/Material"
