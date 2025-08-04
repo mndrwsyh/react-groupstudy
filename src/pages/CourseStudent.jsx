@@ -220,9 +220,6 @@ function CourseStudent() {
                     const courseInGroup = groups.some((g) =>
                       g.selectedCourse.includes(course.id)
                     );
-                    const courseinResource = resources.some((r) =>
-                      r.resourceCourse.includes(course.id)
-                    );
                     return (
                       <ListItem
                         key={course.id}
@@ -234,7 +231,7 @@ function CourseStudent() {
                               <Edit />
                             </IconButton>
                             <IconButton
-                              disabled={courseInGroup && courseinResource}
+                              disabled={courseInGroup}
                               onClick={() => handleDelete(course)}
                             >
                               <Delete />
