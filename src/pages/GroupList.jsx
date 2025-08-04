@@ -130,6 +130,16 @@ function GroupList() {
       toast("Session has been deleted.");
     }
   };
+  const startSession = (session) => {
+    const confirmStart = confirm(
+      "Are you sure you want to start this session?"
+    );
+    if (confirmStart) {
+      navigate(`/sessionstart/${session.id}`);
+    } else {
+      navigate("/");
+    }
+  };
 
   const upcomingSession = (session) => {
     const sessionTime = dayjs(session.selectedDateTime);
@@ -396,10 +406,7 @@ function GroupList() {
                                         size="small"
                                         color="success"
                                         variant="contained"
-                                        // onClick={startSession}
-
-                                        component={RouterLink}
-                                        to={`/sessionstart/${session.id}`}
+                                        onClick={() => startSession(session)}
                                       >
                                         Start Session
                                       </Button>
